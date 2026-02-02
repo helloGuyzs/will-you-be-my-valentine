@@ -5,18 +5,33 @@ const app = express();
 
 app.use(express.json());
 
-// Serve static files with correct MIME types
-app.use(express.static(path.join(__dirname), {
-    setHeaders: (res, path) => {
-        if (path.endsWith('.js')) {
-            res.setHeader('Content-Type', 'application/javascript');
-        } else if (path.endsWith('.css')) {
-            res.setHeader('Content-Type', 'text/css');
-        } else if (path.endsWith('.html')) {
-            res.setHeader('Content-Type', 'text/html');
-        }
-    }
-}));
+// Serve static files explicitly
+app.get('/script.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(__dirname, 'script.js'));
+});
+
+app.get('/styles.css', (req, res) => {
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(path.join(__dirname, 'styles.css'));
+});
+
+app.get('/yes_style.css', (req, res) => {
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(path.join(__dirname, 'yes_style.css'));
+});
+
+app.get('/:filename.png', (req, res) => {
+    res.sendFile(path.join(__dirname, req.params.filename + '.png'));
+});
+
+app.get('/yes_page.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'yes_page.html'));
+});
+
+app.get('/waiting.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'waiting.html'));
+});
 
 const selectionsFile = path.join(__dirname, 'dress_selections.txt');
 
