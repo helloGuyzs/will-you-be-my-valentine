@@ -1,0 +1,12 @@
+{
+  "name": "will-you-be-my-valentine",
+  "version": "1.0.0",
+  "description": "Valentine's Day interactive web app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
