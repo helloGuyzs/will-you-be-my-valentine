@@ -12,6 +12,22 @@
         <div class="gif_container">
             <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
         </div>
+        <p id="excited" class="excited">YAY! I'm so excited — let's pick your dress!</p>
+
+        <button id="forwardBtn" class="forward" aria-label="Move forward to pick dress">➜</button>
+
+        <div id="selectionArea" class="selection-area" aria-hidden="true">
+            <h2 class="choose_text">Choose a dress</h2>
+            <div class="options">
+                <img src="1.png" alt="Dress 1" class="dress-option" data-file="1.png">
+                <img src="2.png" alt="Dress 2" class="dress-option" data-file="2.png">
+                <img src="3.png" alt="Dress 3" class="dress-option" data-file="3.png">
+                <img src="4.png" alt="Dress 4" class="dress-option" data-file="4.png">
+            </div>
+            <p id="chosenText" class="chosen_text">No dress selected yet.</p>
+            <button id="pickBtn" class="pick-btn" style="display:none;">✓ Pick This Dress</button>
+        </div>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>

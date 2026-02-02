@@ -22,3 +22,148 @@ body {
     max-width: 500px; 
     height: auto; 
 }
+
+/* Excited line and forward button */
+.excited {
+    font-size: 1.5rem;
+    color: #b71c1c;
+    margin-top: 16px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: opacity, transform;
+}
+.excited.show {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 1.2s ease-in-out infinite alternate;
+}
+
+.forward {
+    margin-top: 18px;
+    font-size: 2rem;
+    background: transparent;
+    border: 2px solid #d32f2f;
+    color: #d32f2f;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.forward.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: bounce 1s infinite;
+}
+
+/* Selection area hidden by default */
+.selection-area {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 90vw;
+}
+.selection-area.visible {
+    display: block;
+}
+
+.choose_text {
+    font-size: 2rem;
+    color: #d32f2f;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.dress-option {
+    width: 240px;
+    height: 320px;
+    max-width: 45vw;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    border: 4px solid transparent;
+}
+
+.dress-option:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.dress-option.selected {
+    border-color: #d32f2f;
+    box-shadow: 0 12px 35px rgba(211,47,47,0.25);
+    transform: scale(1.08);
+}
+
+.chosen_text {
+    margin-top: 16px;
+    color: #4a4a4a;
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.32s ease, transform 0.32s ease;
+    font-weight: 600;
+}
+
+.chosen_text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pick-btn {
+    margin-top: 18px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pick-btn:hover {
+    background-color: #b71c1c;
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(211, 47, 47, 0.3);
+}
+
+.pick-btn:active {
+    transform: scale(0.96);
+}
+
+.pick-btn.confirmed {
+    background-color: #2e7d32;
+    cursor: default;
+}
+
+/* Animations */
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.04); }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
