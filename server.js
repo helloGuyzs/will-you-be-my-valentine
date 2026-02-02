@@ -4,7 +4,19 @@ const path = require('path');
 const app = express();
 
 app.use(express.json());
-app.use(express.static(__dirname));
+
+// Serve static files with correct MIME types
+app.use(express.static(path.join(__dirname), {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+        } else if (path.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+        } else if (path.endsWith('.html')) {
+            res.setHeader('Content-Type', 'text/html');
+        }
+    }
+}));
 
 const selectionsFile = path.join(__dirname, 'dress_selections.txt');
 
