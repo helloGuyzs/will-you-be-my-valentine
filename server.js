@@ -13,6 +13,11 @@ if (!fs.existsSync(selectionsFile)) {
     fs.writeFileSync(selectionsFile, 'Dress Selection Records\n' + '='.repeat(60) + '\n\n');
 }
 
+// Root route - serve index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Endpoint to save dress selection
 app.post('/api/save-dress', (req, res) => {
     try {
@@ -42,8 +47,8 @@ app.get('/view-selections', (req, res) => {
     }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-    console.log(`View selections at http://localhost:${PORT}/view-selections`);
+    console.log(`Server running at port ${PORT}`);
+    console.log(`View selections at /view-selections`);
 });
